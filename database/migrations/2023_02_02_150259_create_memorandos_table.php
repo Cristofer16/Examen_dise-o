@@ -14,8 +14,12 @@ class CreateMemorandosTable extends Migration
     public function up()
     {
         Schema::create('memorandos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table -> increments('id');
+            $table -> string('numero_memorando', 15);
+            $table -> string('tipo', 30);
+            $table -> unsignedBigInteger('documento_id');
+            $table -> foreign('documento_id') -> references('id') -> on('documentos');
+            $table -> timestamps();
         });
     }
 

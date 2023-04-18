@@ -19,7 +19,7 @@ class CreatePersonalesTable extends Migration
             $table -> string('apellido_paterno', 20) -> nullable(false);
             $table -> string('apellido_materno', 20);
             $table -> string('telefono', 10) -> nullable(false);
-            $table -> string('celular', 10);
+            $table -> string('celular', 10) -> nullable(false);
             $table -> string('ci', 12) -> unique();
             $table -> string('domicilio', 45);
             $table -> string('tipo_contrato', 20);

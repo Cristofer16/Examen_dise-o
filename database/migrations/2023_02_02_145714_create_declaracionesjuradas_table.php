@@ -17,7 +17,7 @@ class CreateDeclaracionesjuradasTable extends Migration
             $table -> increments('id');
             $table -> date('gestion');
             $table -> unsignedBigInteger('documento_id');
-            $table -> foreign('documento_id') -> reference('id') -> on('documentos');
+            $table -> foreign('documento_id') -> references('id') -> on('documentos');
             $table -> timestamps();
         });
     }

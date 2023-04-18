@@ -18,7 +18,7 @@ class CreateBajasmedicasTable extends Migration
             $table -> date('fecha_inicio');
             $table -> date('fecha_fin');
             $table -> unsignedBigInteger('documento_id');
-            $table -> foreign('documento_id') -> reference('id') -> on('documentos');
+            $table -> foreign('documento_id') -> references('id') -> on('documentos');
             $table -> timestamps();
         });
     }
