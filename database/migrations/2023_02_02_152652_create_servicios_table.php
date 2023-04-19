@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCurriculumsTable extends Migration
+class CreateServiciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCurriculumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('curriculums', function (Blueprint $table) {
+        Schema::create('servicios', function (Blueprint $table) {
             $table -> increments('id');
-            $table -> string('especialidad', 40) -> nullable(false);
-            $table -> string('titulo_mayor', 30);
-            $table -> string('cantidad_documentos', 3);
+            $table -> date('fecha_emitida');
+            $table -> string('cantidad_años', 2);
             $table -> unsignedBigInteger('documento_id');
             $table -> foreign('documento_id') -> references('id') -> on('documentos');
             $table -> timestamps();
@@ -31,6 +30,6 @@ class CreateCurriculumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curriculums');
+        Schema::dropIfExists('servicios');
     }
 }

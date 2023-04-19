@@ -14,8 +14,12 @@ class CreateVacacionesTable extends Migration
     public function up()
     {
         Schema::create('vacaciones', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table -> increments('id');
+            $table -> string('tipo', 30);
+            $table -> string('cantidad_dias', 3);
+            $table -> unsignedBigInteger('documento_id');
+            $table -> foreign('documento_id') -> references('id') -> on('documentos');
+            $table -> timestamps();
         });
     }
 
