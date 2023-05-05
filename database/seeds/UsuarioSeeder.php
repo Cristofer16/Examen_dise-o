@@ -17,7 +17,7 @@ class UsuarioSeeder extends Seeder
             'apellido_paterno' => 'Gómez',
             'apellido_materno' => 'Mamani',
             'usuario' => 'pewe',
-            'contraseña' => 'Cgm_8507351',
+            'contraseña' => bcrypt('Cgm_8507351'),
             'tipo' => 'admin',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
