@@ -9,6 +9,20 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = "users";
+
+    public function personales() {
+        return $this -> hasMany(Personal::class);
+    }
+
+    public function documentos() {
+        return $this -> hasMany(Documento::class);
+    }
+
+    public function nuevastablas() {
+        return $this -> hasMany(NuevaTabla::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
