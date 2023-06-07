@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table -> string('contraseña');
             $table -> string('estado', 1) -> default("A");
             $table -> string('tipo', 15);
+            $table -> rememberToken();
             $table -> timestamps();
         });
     }
