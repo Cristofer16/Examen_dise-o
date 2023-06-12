@@ -7,34 +7,30 @@
                     Inicio
                 </span>
             </a>
-
         </li>
-        <li class="has-subnav">
+        <li>
+            <a href="{{ route('personal_ver_personal') }}">
+                <i class="fa fa-user fa-2x"></i>
+                <span class="nav-text">
+                    Ver Personal
+                </span>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('reg_personal') }}">
                 <i class="fa fa-file-text fa-2x"></i>
                 <span class="nav-text">
                     Registrar Personal
                 </span>
             </a>
-
         </li>
-        <li class="has-subnav">
+        <li>
             <a href="#">
                 <i class="fa fa-search fa-2x"></i>
                 <span class="nav-text">
                     Buscar
                 </span>
             </a>
-
-        </li>
-        <li class="has-subnav">
-            <a href="#">
-                <i class="fa fa-camera-retro fa-2x"></i>
-                <span class="nav-text">
-                    Survey Photos
-                </span>
-            </a>
-
         </li>
         <li>
             <a href="#">

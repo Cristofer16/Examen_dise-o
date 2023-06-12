@@ -13,7 +13,7 @@
     <div class="formulario">
         <div class="container">
             <h1>Registra Usuario</h1>
-            <form action="{{ route('user_validar_sesion') }}" method="POST">
+            {{ Form::open(['route' => 'user_validar_sesion', 'method' => 'post']) }}
                 @if (session('exito'))
                     <div class="mb-3 mt-3 alert alert-success">
                         {{ session('exito') }}
@@ -50,7 +50,7 @@
                     <button type="submit" class="btn btn-dark col-2" >Registar</button>
                     <button type="reset" class="btn btn-dark col-2">Borrar</button>
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
     </div>
 @stop

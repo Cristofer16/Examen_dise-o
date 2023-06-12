@@ -13,7 +13,7 @@
     <div class="formulario">
         <div class="container">
             <h1>Registra Personal</h1>
-            <form action="/action_page.php">
+            {{ Form::open(['route' => 'personal_validar_sesion', 'method' => 'post']) }}
                 <div class="mb-3 mt-3">
                     <label for="nombres" class="form-label">Nombres:</label>
                     <input type="text" class="form-control" id="nombres" placeholder="Introduza sus nombres" name="nombres">
@@ -50,7 +50,7 @@
                     <button type="submit" class="btn btn-dark col-2" >Registar</button>
                     <button type="reset" class="btn btn-dark col-2">Borrar</button>
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
     </div>
 @stop

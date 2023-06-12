@@ -14,7 +14,8 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        //
+        $personales = Personal::all();
+        return view('personal.ver') -> with('personales', $personales);
     }
 
     /**
