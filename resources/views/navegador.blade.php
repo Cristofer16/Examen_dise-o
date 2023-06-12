@@ -1,29 +1,28 @@
-<div class="area"></div>
 <nav class="main-menu">
     <ul>
         <li>
-            <a href="https://jbfarrow.com">
+            <a href="{{ route('principal') }}">
                 <i class="fa fa-home fa-2x"></i>
                 <span class="nav-text">
-                    Community Dashboard
+                    Inicio
+                </span>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="{{ route('reg_personal') }}">
+                <i class="fa fa-file-text fa-2x"></i>
+                <span class="nav-text">
+                    Registrar Personal
                 </span>
             </a>
 
         </li>
         <li class="has-subnav">
             <a href="#">
-                <i class="fa fa-globe fa-2x"></i>
+                <i class="fa fa-search fa-2x"></i>
                 <span class="nav-text">
-                    Global Surveyors
-                </span>
-            </a>
-
-        </li>
-        <li class="has-subnav">
-            <a href="#">
-                <i class="fa fa-comments fa-2x"></i>
-                <span class="nav-text">
-                    Group Hub Forums
+                    Buscar
                 </span>
             </a>
 

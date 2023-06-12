@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +39,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $user -> nombres = $request -> nombres;
+        $user -> apellido_paterno = $request -> app;
+        $user -> apellido_materno = $request -> apm;
+        $user -> usuario = $request -> usuario;
+        $user -> contraseña = Hash::make($request -> contraseña);
+        $user -> tipo = $request -> tipo;
+
+        $user -> save();
+
+        return redirect() -> route('reg_user') -> with('exito', 'Usuario registrado con exito.');
     }
 
     /**

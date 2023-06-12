@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Personal;
 
 class PersonalController extends Controller
 {
@@ -34,7 +35,17 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $personal = new Personal();
+
+        $personal -> nombres = $request -> nombres;
+        $personal -> apellido_paterno = $request -> app;
+        $personal -> apellido_materno = $request -> apm;
+        $personal -> telefono = $request -> telefono;
+        $personal -> celular = $request -> celular;
+        $personal -> ci = $request -> ci;
+        $personal -> domicilio = $request -> domicilio;
+        $personal -> tipo_contrato = $request -> tipo_contrato;
+        
     }
 
     /**

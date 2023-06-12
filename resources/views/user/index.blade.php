@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+@extends('master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <title>Login</title>
-    <link rel="shortcut icon" href="/img/logo_Bracamonte.png">
-</head>
+@section('titulo')
+    Login
+@stop
 
-<body>
+@section('cuerpo')
     <section class="vh-100">
         <div class="container-fluid">
             <div class="row">
@@ -52,6 +46,4 @@
             </div>
         </div>
     </section>
-</body>
-
-</html>
+@stop

@@ -19,5 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'user.index') -> name('login');
 Route::view('/principal', 'user.principal') -> name('principal');
+Route::view('/personal/registrar', 'personal.registrar') -> name('reg_personal');
+Route::view('/user/registrar', 'user.registrar') -> name('reg_user');
 
-/* Route::get('/', 'UserController@index') -> name('user.index'); */
+Route::post('/validar_sesion', 'UserController@index') -> name('validar_sesion');
+Route::post('/user/validar_registro', 'UserController@store') -> name('user_validar_sesion');
