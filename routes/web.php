@@ -25,5 +25,6 @@ Route::view('/personal/ver', 'personal.ver') -> name('ver_personal');
 
 Route::post('/validar_sesion', 'UserController@index') -> name('validar_sesion');
 Route::post('/user/validar_registro', 'UserController@store') -> name('user_validar_sesion');
+Route::get('/user/ver_usuarios', 'UserController@index') -> name('user_ver_user');
 Route::post('/personal/validar_registro', 'PersonalController@store') -> name('personal_validar_sesion');
 Route::get('/personal/ver_personal', 'PersonalController@index') -> name('personal_ver_personal');

@@ -1,0 +1,12 @@
+.tabla {
+    margin-left: 60px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+td a {
+    text-decoration: none;
+    color: white;
+}
+td a:hover {
+    text-decoration-line:underline;
+}

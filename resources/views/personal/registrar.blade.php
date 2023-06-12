@@ -5,7 +5,7 @@
 @stop
 
 @section('estilos')
-    <link rel="stylesheet" href="/css/personal/registrar.css">
+    <link rel="stylesheet" href="/css/registrar.css">
 @stop
 
 @section('cuerpo')

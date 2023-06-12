@@ -25,50 +25,18 @@
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class="fa fa-search fa-2x"></i>
+            <a href="{{ route('user_ver_user') }}">
+                <i class="fa fa-users fa-2x"></i>
                 <span class="nav-text">
-                    Buscar
+                    Ver Usuarios
                 </span>
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class="fa fa-film fa-2x"></i>
+            <a href="{{ route('reg_user') }}">
+                <i class="fa fa-file fa-2x"></i>
                 <span class="nav-text">
-                    Surveying Tutorials
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-book fa-2x"></i>
-                <span class="nav-text">
-                    Surveying Jobs
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-cogs fa-2x"></i>
-                <span class="nav-text">
-                    Tools & Resources
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-map-marker fa-2x"></i>
-                <span class="nav-text">
-                    Member Map
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-info fa-2x"></i>
-                <span class="nav-text">
-                    Documentation
+                    Registrar Personal
                 </span>
             </a>
         </li>

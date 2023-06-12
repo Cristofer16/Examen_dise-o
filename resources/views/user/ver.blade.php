@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('titulo')
-    Personal
+    Usuarios
 @stop
 
 @section('estilos')
@@ -12,7 +12,7 @@
     @parent
     <div class="tabla">
         <div class="container">
-            <h1>Lista del Personal</h1>
+            <h1>Lista de Usuarios</h1>
             <?php $i = 0; ?>
             <table class="table table-dark table-striped table-hover">
                 <thead>
@@ -20,17 +20,19 @@
                         <th>N</th>
                         <th>Apellidos</th>
                         <th>Nombres</th>
-                        <th>Carnet de Identidad</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
                         <th>Operaciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($personales as $personal)
+                    @foreach ($users as $user)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $personal -> apellido_paterno . '' . $personal -> apellido_materno }}</td>
-                            <td>{{ $personal -> nombres }}</td>
-                            <td>{{ $personal -> ci }}</td>
+                            <td>{{ $user -> apellido_paterno . '' . $user -> apellido_materno }}</td>
+                            <td>{{ $user -> nombres }}</td>
+                            <td>{{ $user -> usuario }}</td>
+                            <td>{{ $user -> estado }}</td>
                             <td>
                                 <a href="">Mostrar</a> |
                                 <a href="">Editar</a> |
