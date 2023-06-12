@@ -29,7 +29,7 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $user -> apellido_paterno . '' . $user -> apellido_materno }}</td>
+                            <td>{{ $user -> apellido_paterno . ' ' . $user -> apellido_materno }}</td>
                             <td>{{ $user -> nombres }}</td>
                             <td>{{ $user -> usuario }}</td>
                             <td>{{ $user -> estado }}</td>

@@ -36,7 +36,7 @@
             <a href="{{ route('reg_user') }}">
                 <i class="fa fa-file fa-2x"></i>
                 <span class="nav-text">
-                    Registrar Personal
+                    Registrar Usuario
                 </span>
             </a>
         </li>

@@ -28,7 +28,7 @@
                     @foreach ($personales as $personal)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $personal -> apellido_paterno . '' . $personal -> apellido_materno }}</td>
+                            <td>{{ $personal -> apellido_paterno . ' ' . $personal -> apellido_materno }}</td>
                             <td>{{ $personal -> nombres }}</td>
                             <td>{{ $personal -> ci }}</td>
                             <td>

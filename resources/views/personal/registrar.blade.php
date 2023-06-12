@@ -14,6 +14,12 @@
         <div class="container">
             <h1>Registra Personal</h1>
             {{ Form::open(['route' => 'personal_validar_sesion', 'method' => 'post']) }}
+                @if (session('exito'))
+                <div class="mb-3 mt-3 alert alert-success alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    {{ session('exito') }}
+                </div>
+                @endif
                 <div class="mb-3 mt-3">
                     <label for="nombres" class="form-label">Nombres:</label>
                     <input type="text" class="form-control" id="nombres" placeholder="Introduza sus nombres" name="nombres">
