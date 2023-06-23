@@ -12,6 +12,8 @@
     @parent
     <div class="saludo">
         <h1>Bienvenido</h1>
-        <h1>Cristofer</h1>
+        @auth
+            <h1>{{ Auth::user() -> nombres }}</h1>
+        @endauth
     </div>
 @stop

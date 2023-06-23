@@ -17,25 +17,33 @@
 
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-                        <form style="width: 23rem;">
+                        {{ Form::open(['route' => 'User_login', 'method' => 'post']) }}
+                            <div style="width: 23rem;">
 
-                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inciar Sesión</h3>
+                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inciar Sesión</h3>
 
-                            <div class="form-outline mb-4">
-                                <input type="text" id="usuario" class="form-control form-control-lg" />
-                                <label class="form-label" for="usuario">Usuario</label>
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="usuario" class="form-control form-control-lg" name="usuario"/>
+                                    <label class="form-label" for="usuario">Usuario</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="contraseña" class="form-control form-control-lg" name="contraseña"/>
+                                    <label class="form-label" for="contraseña">Contraseña</label>
+                                </div>
+
+                                <div class="pt-1 mb-4">
+                                    <button class="btn btn-dark btn-lg btn-block" type="submit">Ingresar</button>
+                                </div>
+                                @if (session('Fallo'))
+                                    <div class="mb-3 mt-3 alert alert-success alert-dismissible fade show">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        {{ session('Fallo') }}
+                                    </div>    
+                                @endif
                             </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="contraseña" class="form-control form-control-lg" />
-                                <label class="form-label" for="contraseña">Contraseña</label>
-                            </div>
-
-                            <div class="pt-1 mb-4">
-                                <button class="btn btn-dark btn-lg btn-block" type="button">Ingresar</button>
-                            </div>
-
-                        </form>
+                        {{ Form::close() }}
+                        
 
                     </div>
 

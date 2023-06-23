@@ -24,27 +24,31 @@
                 </span>
             </a>
         </li>
-        <li>
-            <a href="{{ route('user_ver_user') }}">
-                <i class="fa fa-users fa-2x"></i>
-                <span class="nav-text">
-                    Ver Usuarios
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('reg_user') }}">
-                <i class="fa fa-file fa-2x"></i>
-                <span class="nav-text">
-                    Registrar Usuario
-                </span>
-            </a>
-        </li>
+        @auth
+            @if (Auth::user() -> tipo == "admin")
+                <li>
+                    <a href="{{ route('user_ver_user') }}">
+                        <i class="fa fa-users fa-2x"></i>
+                        <span class="nav-text">
+                            Ver Usuarios
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('reg_user') }}">
+                        <i class="fa fa-file fa-2x"></i>
+                        <span class="nav-text">
+                            Registrar Usuario
+                        </span>
+                    </a>
+                </li>
+            @endif
+        @endauth
     </ul>
 
     <ul class="logout">
         <li>
-            <a href="#">
+            <a href="{{ route('logout') }}">
                 <i class="fa fa-power-off fa-2x"></i>
                 <span class="nav-text">
                     Logout

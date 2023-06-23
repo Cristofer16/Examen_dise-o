@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table -> string('apellido_paterno', 20) -> nullable(false);
             $table -> string('apellido_materno', 20);
             $table -> string('usuario', 30) -> unique();
-            $table -> string('contraseña');
-            $table -> string('estado', 1) -> default("A");
+            $table -> string('password');
+            $table -> string('activo', 1) -> default("S");
             $table -> string('tipo', 15);
             $table -> rememberToken();
             $table -> timestamps();

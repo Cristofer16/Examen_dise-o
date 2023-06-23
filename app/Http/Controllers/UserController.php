@@ -44,7 +44,7 @@ class UserController extends Controller
         $user -> apellido_paterno = $request -> app;
         $user -> apellido_materno = $request -> apm;
         $user -> usuario = $request -> usuario;
-        $user -> contraseña = Hash::make($request -> contraseña);
+        $user -> password = Hash::make($request -> password);
         $user -> tipo = $request -> tipo;
 
         $user -> save();
@@ -95,5 +95,27 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function login(Request $request) {
+        $credenciales = [
+            "usuario" => $request -> usuario,
+            "password" => $request -> contraseña,
+            "activo" => "S"
+        ];
+        
+        if (Auth::attempt($credenciales)) {
+            $request -> session() -> regenerate();
+            return redirect() -> route('principal');
+        } else {
+            return redirect() -> route('login') -> with('Fallo', 'Uausrio y/o contraseña invalidos, verifique por favor.');
+        }
+    }
+    public function logout(Request $request) {
+        Auth::logout();
+        $request -> session() -> invalidate();
+        $request -> session() -> regenerateToken();
+
+        return redirect() -> route('login');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Personal;
+use Illuminate\Support\Facades\Auth;
 
 class PersonalController extends Controller
 {
@@ -46,7 +47,11 @@ class PersonalController extends Controller
         $personal -> ci = $request -> ci;
         $personal -> domicilio = $request -> domicilio;
         $personal -> tipo_contrato = $request -> tipo_contrato;
+        $personal -> user_id = Auth::user() -> id;
         
+        $personal -> save();
+
+        return redirect() -> route('reg_personal') -> with('exito', 'Personal registrado con exito.');
     }
 
     /**
