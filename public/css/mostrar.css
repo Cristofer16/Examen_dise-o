@@ -1,0 +1,9 @@
+.cuerpo {
+    margin-left: 60px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.nombre {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}

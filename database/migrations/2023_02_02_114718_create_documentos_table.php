@@ -15,11 +15,10 @@ class CreateDocumentosTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table -> increments('id');
+            $table -> string('nombre', 50);
             $table -> string('archivero', 25);
             $table -> string('cajon', 3);
             $table -> string('ubicacion', 70);
-            $table -> dateTime('fecha_agregado');
-            $table -> dateTime('fecha_actualizacion');
             $table -> unsignedBigInteger('personal_id');
             $table -> foreign('personal_id') -> references('id') -> on('personales');
             $table -> unsignedBigInteger('user_id');

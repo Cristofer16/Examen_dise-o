@@ -62,7 +62,9 @@ class PersonalController extends Controller
      */
     public function show($id)
     {
-        //
+        $personal = Personal::find($id);
+        //dd($user -> nombres);
+        return view('personal.mostrar') -> with('personal', $personal);
     }
 
     /**

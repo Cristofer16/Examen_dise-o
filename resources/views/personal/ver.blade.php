@@ -32,7 +32,7 @@
                             <td>{{ $personal -> nombres }}</td>
                             <td>{{ $personal -> ci }}</td>
                             <td>
-                                <a href="">Mostrar</a> |
+                                <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
                                 <a href="">Editar</a> |
                                 <a href="">Eliminar</a>
                             </td>
