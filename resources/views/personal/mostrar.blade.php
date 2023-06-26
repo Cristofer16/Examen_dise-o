@@ -28,38 +28,38 @@
                     <p><b>Registrado por: </b>{{ $personal -> user -> nombres }}</p>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-2">
-                    <a href="{{ route('personal_ver_personal') }}"><button class="btn btn-dark">Volver atras</button></a>
-                </div>
-            </div>
             <h1 class="titulo">Lista de Documentos</h1>
             <?php $i = 0; ?>
             <table class="table table-dark table-striped table-hover">
                 <thead>
                     <tr>
                         <th>N</th>
-                        <th>Archivero</th>
                         <th>Docuemnto</th>
+                        <th>Archivero</th>
                         <th>Operaciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($personales as $personal)
+                    <?php $documentos = $personal -> documentos ?>
+                    @foreach ($documentos as $documento)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $personal -> apellido_paterno . ' ' . $personal -> apellido_materno }}</td>
-                            <td>{{ $personal -> nombres }}</td>
-                            <td>{{ $personal -> ci }}</td>
+                            <td>{{ $documento -> nombre }}</td>
+                            <td>{{ $documento -> archivero }}</td>
                             <td>
-                                <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
+                                <a href="{{ route('personal_mos_personal', ['id' => $documento -> id]) }}">Mostrar</a> |
                                 <a href="">Editar</a> |
                                 <a href="">Eliminar</a>
                             </td>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
+            <div class="row justify-content-center">
+                <div class="col-2">
+                    <a href="{{ route('personal_ver_personal') }}"><button class="btn btn-dark">Volver atras</button></a>
+                </div>
+            </div>
         </div>
     </div>
 @stop
