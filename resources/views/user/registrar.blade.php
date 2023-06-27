@@ -17,7 +17,7 @@
             <div class="formulario">
                 <div class="container">
                     <h1>Registra Usuario</h1>
-                    {{ Form::open(['route' => 'user_validar_sesion', 'method' => 'post']) }}
+                    {{ Form::open(['route' => 'user_validar_registro', 'method' => 'post']) }}
                         @if (session('exito'))
                             <div class="mb-3 mt-3 alert alert-success alert-dismissible fade show">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

@@ -23,6 +23,7 @@ class CreatePersonalesTable extends Migration
             $table -> string('ci', 12) -> unique();
             $table -> string('domicilio', 45);
             $table -> string('tipo_contrato', 20);
+            $table -> string('activo', 1) -> default("S");
             $table -> unsignedBigInteger('user_id');
             $table -> foreign('user_id') -> references('id') -> on('users');
             $table -> timestamps();

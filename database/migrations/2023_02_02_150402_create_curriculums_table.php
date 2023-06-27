@@ -15,7 +15,7 @@ class CreateCurriculumsTable extends Migration
     {
         Schema::create('curriculums', function (Blueprint $table) {
             $table -> increments('id');
-            $table -> string('especialidad', 40) -> nullable(false);
+            $table -> string('especialidad', 40) -> nullable();
             $table -> string('titulo_mayor', 30);
             $table -> string('cantidad_documentos', 3);
             $table -> unsignedBigInteger('documento_id');

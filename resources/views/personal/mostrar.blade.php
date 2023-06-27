@@ -29,6 +29,27 @@
                 </div>
             </div>
             <h1 class="titulo">Lista de Documentos</h1>
+            {{ Form::open(['route' => 'crear_documento', 'method' => 'post']) }}
+                <label for="tipo" class="form-label">tipo de docuemto:</label>
+                <div class="row">
+                    <div class="col-md-5 col-12">
+                        <div class="mb-3">
+                            <select class="form-select" id="tipo" name="tipo">
+                                <option value="bajamedica">Baja Medica</option>
+                                <option value="declaracionjurada">Declaracion Jurada</option>
+                                <option value="memorando">Memorando</option>
+                                <option value="curriculum">Curriculum</option>
+                                <option value="servicio">Años de Servicio</option>
+                                <option value="vacacion">Vacacion</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input name="personal_id" type="hidden" value="{{ $personal -> id }}">
+                    <div class="col-md-7 col-12">
+                        <button type="submit" class="btn btn-dark" >Nuevo Documento</button>
+                    </div>
+                </div>
+            {{ Form::close() }}
             <?php $i = 0; ?>
             <table class="table table-dark table-striped table-hover">
                 <thead>
@@ -42,16 +63,18 @@
                 <tbody>
                     <?php $documentos = $personal -> documentos ?>
                     @foreach ($documentos as $documento)
-                        <tr>
-                            <td>{{ ++$i }}</td>
-                            <td>{{ $documento -> nombre }}</td>
-                            <td>{{ $documento -> archivero }}</td>
-                            <td>
-                                <a href="{{ route('personal_mos_personal', ['id' => $documento -> id]) }}">Mostrar</a> |
-                                <a href="">Editar</a> |
-                                <a href="">Eliminar</a>
-                            </td>
-                        </tr>
+                        @if ($documento -> activo == "S")
+                            <tr>
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $documento -> nombre }}</td>
+                                <td>{{ $documento -> archivero }}</td>
+                                <td>
+                                    <a href="{{ route('documento_mos_documento', ['id' => $documento -> id]) }}">Mostrar</a> |
+                                    <a href="">Editar</a> |
+                                    <a href="">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>

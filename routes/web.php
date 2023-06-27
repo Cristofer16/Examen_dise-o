@@ -27,9 +27,15 @@ Route::view('/personal/mostrar', 'personal.mostrar') -> middleware('auth') -> na
 Route::post('/validar_sesion', 'UserController@index') -> name('validar_sesion');
 Route::post('/user/login', 'UserController@login') -> name('User_login');
 Route::get('/user/logout', 'UserController@logout') -> name('logout');
-Route::post('/user/validar_registro', 'UserController@store') -> middleware('auth') -> name('user_validar_sesion');
+
+Route::post('/user/validar_registro', 'UserController@store') -> middleware('auth') -> name('user_validar_registro');
 Route::get('/user/ver_usuarios', 'UserController@index') -> middleware('auth') -> name('user_ver_user');
 Route::get('/user/mostrar/{id}', 'UserController@show') -> middleware('auth') -> name('user_mos_user');
-Route::post('/personal/validar_registro', 'PersonalController@store') -> middleware('auth') -> name('personal_validar_sesion');
+
+Route::post('/personal/validar_registro', 'PersonalController@store') -> middleware('auth') -> name('personal_validar_registro');
 Route::get('/personal/ver_personal', 'PersonalController@index') -> middleware('auth') -> name('personal_ver_personal');
 Route::get('/personal/mostrar/{id}', 'PersonalController@show') -> middleware('auth') -> name('personal_mos_personal');
+
+Route::get('/documento/mostrar/{id}', 'DocumentoController@show') -> middleware('auth') -> name('documento_mos_documento');
+Route::post('/documento/registrar', 'DocumentoController@create') -> middleware('auth') -> name('crear_documento');
+Route::post('/documento/validar_registro', 'DocumentoController@store') -> middleware('auth') -> name('documento_validar_registro');

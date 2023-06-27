@@ -26,17 +26,19 @@
                 </thead>
                 <tbody>
                     @foreach ($personales as $personal)
-                        <tr>
-                            <td>{{ ++$i }}</td>
-                            <td>{{ $personal -> apellido_paterno . ' ' . $personal -> apellido_materno }}</td>
-                            <td>{{ $personal -> nombres }}</td>
-                            <td>{{ $personal -> ci }}</td>
-                            <td>
-                                <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
-                                <a href="">Editar</a> |
-                                <a href="">Eliminar</a>
-                            </td>
-                        </tr>
+                        @if ($personal -> activo == "S")
+                            <tr>
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $personal -> apellido_paterno . ' ' . $personal -> apellido_materno }}</td>
+                                <td>{{ $personal -> nombres }}</td>
+                                <td>{{ $personal -> ci }}</td>
+                                <td>
+                                    <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
+                                    <a href="">Editar</a> |
+                                    <a href="">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
