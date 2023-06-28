@@ -71,8 +71,8 @@
                                 <td>{{ $documento -> archivero }}</td>
                                 <td>
                                     <a href="{{ route('documento_mos_documento', ['id' => $documento -> id]) }}">Mostrar</a> |
-                                    <a href="">Editar</a> |
-                                    <a href="">Eliminar</a>
+                                    <a href="{{ route('documento_edi_documento', ['id' => $documento -> id]) }}">Editar</a> |
+                                    <a href="{{ route('documento_eli_documento', ['id' => $documento -> id]) }}">Eliminar</a>
                                 </td>
                             </tr>
                         @endif

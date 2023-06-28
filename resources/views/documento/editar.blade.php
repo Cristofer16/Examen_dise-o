@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('titulo')
-    Registrar Documento
+    Editar Documento
 @stop
 
 @section('estilos')
@@ -13,8 +13,8 @@
     <div class="formulario">
         <div class="container">
             <h1>
-                Registra Documento - 
-                @switch($datos['tipo'])
+                Editar Documento - 
+                @switch($documento -> tipo)
                     @case("bajamedica")
                         Baja Medica
                         @break
@@ -35,91 +35,70 @@
                         @break
                 @endswitch
             </h1>
-            {{ Form::open(['route' => 'documento_validar_registro', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
+            {{ Form::open(['route' => ['documento_validar_actualizacion', $documento -> id], 'method' => 'post']) }}
                 <div class="mb-3 mt-3">
                     <label for="nombre" class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Introduza el nombre del documento" name="nombre" required>
+                    <input type="text" class="form-control" id="nombre" placeholder="Introduza el nombre del documento" name="nombre" required value="{{ $documento -> nombre }}">
                 </div>
-                <input name="tipo" type="hidden" value="{{ $datos['tipo'] }}">
-                <div class="mb-3">
-                    <label for="archivero" class="form-label">Archivero:</label>
-                    <div class="mb-3">
-                        <select class="form-select" id="archivero" name="archivero">
-                            <option value="doctor">Doctores</option>
-                            <option value="enfermera">Enfermeras</option>
-                            <option value="administrativo">Administrativos</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="cajon" class="form-label">Cajon:</label>
-                    <input type="text" class="form-control" id="cajon" placeholder="Introduza la letra del cajon" name="cajon" required>
-                </div>
-                <div class="custom-file mb-3">
-                    <label class="form-label" for="pdf">Seleccionar Archivo</label>
-                    <input type="file" class="form-control" id="pdf" lang="es" name="pdf" required>
-                </div>
-                <input name="personal_id" type="hidden" value="{{ $datos['personal_id'] }}">
-                <input name="nom_completo" type="hidden" value="{{ $datos['nom_completo'] }}">
-                @switch($datos['tipo'])
+                @switch($documento -> tipo)
                     @case("bajamedica")
                         <div class="mb-3">
                             <label for="fecha_inicio" class="form-label">Fecha de Inicio:</label>
-                            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" required>
+                            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" required value="{{ $documento -> bajamedica -> fecha_inicio }}">
                         </div>
                         <div class="mb-3">
                             <label for="fecha_fin" class="form-label">Fecha de Finalización:</label>
-                            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required>
+                            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required value="{{ $documento -> bajamedica -> fecha_fin }}">
                         </div>
                         @break
                     @case("declaracionjurada")
                         <div class="mb-3">
                             <label for="gestion" class="form-label">Gestion:</label>
-                            <input type="date" class="form-control" id="gestion" name="gestion" required>
+                            <input type="date" class="form-control" id="gestion" name="gestion" required value="{{ $documento -> declaracionjurada -> gestion }}">
                         </div>
                         @break
                     @case("memorando")
                         <div class="mb-3">
                             <label for="numero_memorando" class="form-label">Número de Memorando:</label>
-                            <input type="text" class="form-control" id="numero_memorando" placeholder="Introduza el número del memorando" name="numero_memorando" required>
+                            <input type="text" class="form-control" id="numero_memorando" placeholder="Introduza el número del memorando" name="numero_memorando" required value="{{ $documento -> memorando -> numero_memorando }}">
                         </div>
                         <div class="mb-3">
                             <label for="tipo_memo" class="form-label">Tipo de Memorando:</label>
-                            <input type="text" class="form-control" id="tipo_memo" placeholder="Introduza el tipo de memorando" name="tipo_memo" required>
+                            <input type="text" class="form-control" id="tipo_memo" placeholder="Introduza el tipo de memorando" name="tipo_memo" required value="{{ $documento -> memorando -> tipo }}">
                         </div>
                         @break
                     @case("curriculum")
                         <div class="mb-3">
                             <label for="especialidad" class="form-label">Especialidad:</label>
-                            <input type="text" class="form-control" id="especialidad" placeholder="Introduza su especialidad" name="especialidad">
+                            <input type="text" class="form-control" id="especialidad" placeholder="Introduza su especialidad" name="especialidad" value="{{ $documento -> curriculum -> especialidad }}">
                         </div>
                         <div class="mb-3">
                             <label for="titulo_mayor" class="form-label">Titulo de Mayor Grado:</label>
-                            <input type="text" class="form-control" id="titulo_mayor" placeholder="Introduza su grado mayor" name="titulo_mayor" required>
+                            <input type="text" class="form-control" id="titulo_mayor" placeholder="Introduza su grado mayor" name="titulo_mayor" required value="{{ $documento -> curriculum -> titulo_mayor }}">
                         </div>
                         <div class="mb-3">
                             <label for="cantidad_documentos" class="form-label">Cantidad de Documentos Presentados:</label>
-                            <input type="number" class="form-control" id="cantidad_documentos" placeholder="Introduza la cantida de los documentos" name="cantidad_documentos" required>
+                            <input type="number" class="form-control" id="cantidad_documentos" placeholder="Introduza la cantida de los documentos" name="cantidad_documentos" required value="{{ $documento -> curriculum -> cantidad_documentos }}">
                         </div>
                         @break
                     @case("servicio")
                         <div class="mb-3">
                             <label for="fecha_emitida" class="form-label">Fecha Emitida del Documento:</label>
-                            <input type="date" class="form-control" id="fecha_emitida" name="fecha_emitida" required>
+                            <input type="date" class="form-control" id="fecha_emitida" name="fecha_emitida" required value="{{ $documento -> servicio -> fecha_emitida }}">
                         </div>
                         <div class="mb-3">
                             <label for="cantidad_años" class="form-label">Años de Servicio:</label>
-                            <input type="number" class="form-control" id="cantidad_años" placeholder="Introduza los años de servicio" name="cantidad_años" required>
+                            <input type="number" class="form-control" id="cantidad_años" placeholder="Introduza los años de servicio" name="cantidad_años" required value="{{ $documento -> servicio -> cantidad_años }}">
                         </div>
                         @break
                     @case("vacacion")
                         <div class="mb-3">
                             <label for="tipo_vacacion" class="form-label">Tipo de Vacación:</label>
-                            <input type="text" class="form-control" id="tipo_vacacion" placeholder="Introduza el tipo de vacación" name="tipo_vacacion" required>
+                            <input type="text" class="form-control" id="tipo_vacacion" placeholder="Introduza el tipo de vacación" name="tipo_vacacion" required value="{{ $documento -> vacacion -> tipo }}">
                         </div>
                         <div class="mb-3">
                             <label for="cantidad_dias" class="form-label">Cantidad de Días:</label>
-                            <input type="number" class="form-control" id="cantidad_dias" placeholder="Introduza la cantidad de días" name="cantidad_dias" required>
+                            <input type="number" class="form-control" id="cantidad_dias" placeholder="Introduza la cantidad de días" name="cantidad_dias" required value="{{ $documento -> vacacion -> cantidad_dias }}">
                         </div>
                         @break
                 @endswitch

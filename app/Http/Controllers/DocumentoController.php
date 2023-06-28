@@ -113,7 +113,7 @@ class DocumentoController extends Controller
                 break;
         }
 
-        return redirect() -> route('principal') -> with('exito', 'Documento registrado con exito.');
+        return redirect() -> route('mensaje') -> with('mensaje', 'Documento registrado con exito.');
 
     }
 
@@ -126,7 +126,7 @@ class DocumentoController extends Controller
     public function show($id)
     {
         $documento = Documento::find($id);
-        //dd($user -> nombres);
+        //dd($documento -> nombre);
         return view('documento.mostrar') -> with('documento', $documento);
     }
 
@@ -138,7 +138,9 @@ class DocumentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $documento = Documento::find($id);
+        //dd($documento -> nombre);
+        return view('documento.editar') -> with('documento', $documento);
     }
 
     /**
@@ -150,7 +152,47 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $documento = Documento::find($id);
+
+        //dd($documento -> tipo);
+        $documento -> nombre = $request -> nombre;
+
+        $documento -> save();
+
+        switch ($documento -> tipo) {
+            case 'bajamedica':
+                $documento -> bajamedica -> fecha_inicio = $request -> fecha_inicio;
+                $documento -> bajamedica -> fecha_fin = $request -> fecha_fin;
+                $documento -> bajamedica -> save();
+                break;
+            case 'declaracionjurada':
+                $documento -> declaracionjurada -> gestion = $request -> gestion;
+                $documento -> declaracionjurada -> save();
+                break;
+            case 'memorando':
+                $documento -> memorando -> numero_memorando = $request -> numero_memorando;
+                $documento -> memorando -> tipo = $request -> tipo_memo;
+                $documento -> memorando -> save();
+                break;
+            case 'curriculum':
+                $documento -> curriculum -> especialidad = $request -> especialidad;
+                $documento -> curriculum -> titulo_mayor = $request -> titulo_mayor;
+                $documento -> curriculum -> cantidad_documentos = $request -> cantidad_documentos;
+                $documento -> curriculum -> save();
+                break;
+            case 'servicio':
+                $documento -> servicio -> fecha_emitida = $request -> fecha_emitida;
+                $documento -> servicio -> cantidad_años = $request -> cantidad_años;
+                $documento -> servicio -> save();
+                break;
+            case 'vacacion':
+                $documento -> vacacion -> tipo = $request -> tipo_vacacion;
+                $documento -> vacacion -> cantidad_dias = $request -> cantidad_dias;
+                $documento -> vacacion -> save();
+                break;
+        }
+
+        return redirect() -> route('mensaje') -> with('mensaje', 'Documento actualizado con exito.');
     }
 
     /**
@@ -161,6 +203,11 @@ class DocumentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $documento = Documento::find($id);
+        //dd($user);
+        $documento -> activo = "N";
+        $documento -> save();
+
+        return redirect() -> route('mensaje') -> with('mensaje', 'Personal eliminado correctamente.');
     }
 }

@@ -39,8 +39,8 @@
                                     <td>{{ $user -> activo }}</td>
                                     <td>
                                         <a href="{{ route('user_mos_user', ['id' => $user -> id]) }}">Mostrar</a> |
-                                        <a href="">Editar</a> |
-                                        <a href="">Eliminar</a>
+                                        <a href="{{ route('user_edi_user', ['id' => $user -> id]) }}">Editar</a> |
+                                        <a href="{{ route('user_eli_user', ['id' => $user -> id]) }}">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -73,7 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        //dd($user -> nombres);
+        return view('user.editar') -> with('user', $user);
     }
 
     /**
@@ -85,7 +87,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user -> nombres = $request -> nombres;
+        $user -> apellido_paterno = $request -> app;
+        $user -> apellido_materno = $request -> apm;
+        $user -> usuario = $request -> usuario;
+        //$user -> password = Hash::make($request -> password);
+        $user -> activo = $request -> activo;
+        $user -> tipo = $request -> tipo;
+        $user -> updated_at = date('Y-m-d H:i:s');
+
+        $user -> save();
+
+        return redirect() -> route('mensaje') -> with('mensaje', 'Usuario actualizado con exito.');
     }
 
     /**
@@ -96,7 +111,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        //dd($user);
+        $user -> activo = "N";
+        $user -> save();
+
+        return redirect() -> route('mensaje') -> with('mensaje', 'Uausrio eliminado correctamente.');
     }
 
     public function login(Request $request) {

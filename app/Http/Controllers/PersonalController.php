@@ -63,7 +63,7 @@ class PersonalController extends Controller
     public function show($id)
     {
         $personal = Personal::find($id);
-        //dd($user -> nombres);
+        //dd($personal -> nombres);
         return view('personal.mostrar') -> with('personal', $personal);
     }
 
@@ -75,7 +75,9 @@ class PersonalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $personal = Personal::find($id);
+        //dd($personal -> nombres);
+        return view('personal.editar') -> with('personal', $personal);
     }
 
     /**
@@ -87,7 +89,21 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $personal = Personal::find($id);
+
+        $personal -> nombres = $request -> nombres;
+        $personal -> apellido_paterno = $request -> app;
+        $personal -> apellido_materno = $request -> apm;
+        $personal -> telefono = $request -> telefono;
+        $personal -> celular = $request -> celular;
+        $personal -> ci = $request -> ci;
+        $personal -> domicilio = $request -> domicilio;
+        $personal -> tipo_contrato = $request -> tipo_contrato;
+        $personal -> updated_at = date('Y-m-d H:i:s');
+        
+        $personal -> save();
+
+        return redirect() -> route('mensaje') -> with('mensaje', 'Personal actualizado con exito.');
     }
 
     /**
@@ -98,6 +114,11 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $personal = Personal::find($id);
+        //dd($user);
+        $personal -> activo = "N";
+        $personal -> save();
+
+        return redirect() -> route('mensaje') -> with('mensaje', 'Personal eliminado correctamente.');
     }
 }

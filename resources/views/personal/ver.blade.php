@@ -34,8 +34,8 @@
                                 <td>{{ $personal -> ci }}</td>
                                 <td>
                                     <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
-                                    <a href="">Editar</a> |
-                                    <a href="">Eliminar</a>
+                                    <a href="{{ route('personal_edi_personal', ['id' => $personal -> id]) }}">Editar</a> |
+                                    <a href="{{ route('personal_eli_personal', ['id' => $personal -> id]) }}">Eliminar</a>
                                 </td>
                             </tr>
                         @endif

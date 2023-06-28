@@ -26,7 +26,7 @@
                         @endif
                         <div class="mb-3 mt-3">
                             <label for="nombres" class="form-label">Nombres:</label>
-                            <input type="text" class="form-control" id="nombres" placeholder="Introduza sus nombres" name="nombres">
+                            <input type="text" class="form-control" id="nombres" placeholder="Introduza sus nombres" name="nombres" required>
                         </div>
                         <div class="mb-3">
                             <label for="app" class="form-label">Apellido Paterno:</label>
@@ -34,15 +34,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="apm" class="form-label">Apellido Materno:</label>
-                            <input type="text" class="form-control" id="apm" placeholder="Introduza su apellido materno" name="apm">
+                            <input type="text" class="form-control" id="apm" placeholder="Introduza su apellido materno" name="apm" required>
                         </div>
                         <div class="mb-3">
                             <label for="usuario" class="form-label">Usuario:</label>
-                            <input type="text" class="form-control" id="usuario" placeholder="Introduza su usuario" name="usuario">
+                            <input type="text" class="form-control" id="usuario" placeholder="Introduza su usuario" name="usuario" required>
                         </div>
                         <div class="mb-3">
                             <label for="contraseña" class="form-label">Contraseña:</label>
-                            <input type="password" class="form-control" id="contraseña" placeholder="Introduza su contraseña" name="password">
+                            <input type="password" class="form-control" id="contraseña" placeholder="Introduza su contraseña" name="password" required>
                         </div>
                         <div class="mb-3">
                             <label for="tipo" class="form-label">tipo:</label>
