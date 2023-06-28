@@ -45,6 +45,7 @@
                         </div>
                     </div>
                     <input name="personal_id" type="hidden" value="{{ $personal -> id }}">
+                    <input name="nom_completo" type="hidden" value="{{ $personal -> apellido_paterno . "_" . $personal -> apellido_materno . "_" . $personal -> nombres }}">
                     <div class="col-md-7 col-12">
                         <button type="submit" class="btn btn-dark" >Nuevo Documento</button>
                     </div>

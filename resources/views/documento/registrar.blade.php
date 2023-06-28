@@ -12,14 +12,30 @@
     @parent
     <div class="formulario">
         <div class="container">
-            <h1>Registra Documento</h1>
-            {{ Form::open(['route' => 'documento_validar_registro', 'method' => 'post']) }}
-                @if (session('exito'))
-                <div class="mb-3 mt-3 alert alert-success alert-dismissible fade show">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    {{ session('exito') }}
-                </div>
-                @endif
+            <h1>
+                Registra Documento - 
+                @switch($datos['tipo'])
+                    @case("bajamedica")
+                        Baja Medica
+                        @break
+                    @case("declaracionjurada")
+                        Declaracion Jurada
+                        @break
+                    @case("memorando")
+                        Momorandum
+                        @break
+                    @case("curriculum")
+                        Curriculum
+                        @break
+                    @case("servicio")
+                        Años de Servicio
+                        @break
+                    @case("vacacion")
+                        Vacaciones
+                        @break
+                @endswitch
+            </h1>
+            {{ Form::open(['route' => 'documento_validar_registro', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
                 <div class="mb-3 mt-3">
                     <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Introduza el nombre del documento" name="nombre">
@@ -44,6 +60,7 @@
                     <input type="file" class="form-control" id="pdf" lang="es" name="pdf">
                 </div>
                 <input name="personal_id" type="hidden" value="{{ $datos['personal_id'] }}">
+                <input name="nom_completo" type="hidden" value="{{ $datos['nom_completo'] }}">
                 @switch($datos['tipo'])
                     @case("bajamedica")
                         <div class="mb-3">
@@ -67,8 +84,8 @@
                             <input type="text" class="form-control" id="numero_memorando" placeholder="Introduza el número del memorando" name="numero_memorando">
                         </div>
                         <div class="mb-3">
-                            <label for="tipo" class="form-label">Tipo de Memorando:</label>
-                            <input type="text" class="form-control" id="tipo" placeholder="Introduza el tipo de memorando" name="tipo">
+                            <label for="tipo_memo" class="form-label">Tipo de Memorando:</label>
+                            <input type="text" class="form-control" id="tipo_memo" placeholder="Introduza el tipo de memorando" name="tipo_memo">
                         </div>
                         @break
                     @case("curriculum")
@@ -97,8 +114,8 @@
                         @break
                     @case("vacacion")
                         <div class="mb-3">
-                            <label for="tipo" class="form-label">Tipo de Vacación:</label>
-                            <input type="text" class="form-control" id="tipo" placeholder="Introduza el tipo de vacación" name="tipo">
+                            <label for="tipo_vacacion" class="form-label">Tipo de Vacación:</label>
+                            <input type="text" class="form-control" id="tipo_vacacion" placeholder="Introduza el tipo de vacación" name="tipo_vacacion">
                         </div>
                         <div class="mb-3">
                             <label for="cantidad_dias" class="form-label">Cantidad de Días:</label>

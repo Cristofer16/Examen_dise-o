@@ -19,7 +19,7 @@ class CreateDocumentosTable extends Migration
             $table -> string('tipo', 50);
             $table -> string('archivero', 25);
             $table -> string('cajon', 1);
-            $table -> string('ubicacion', 70);
+            $table -> string('ubicacion', 100);
             $table -> string('activo', 1) -> default("S");
             $table -> unsignedBigInteger('personal_id');
             $table -> foreign('personal_id') -> references('id') -> on('personales');
