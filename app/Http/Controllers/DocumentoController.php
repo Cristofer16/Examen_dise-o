@@ -161,34 +161,40 @@ class DocumentoController extends Controller
 
         switch ($documento -> tipo) {
             case 'bajamedica':
-                $documento -> bajamedica -> fecha_inicio = $request -> fecha_inicio;
-                $documento -> bajamedica -> fecha_fin = $request -> fecha_fin;
-                $documento -> bajamedica -> save();
+                $bajamedica = BajaMedica::where('documento_id', $id) -> first();
+                $bajamedica -> fecha_inicio = $request -> fecha_inicio;
+                $bajamedica -> fecha_fin = $request -> fecha_fin;
+                $bajamedica -> save();
                 break;
             case 'declaracionjurada':
-                $documento -> declaracionjurada -> gestion = $request -> gestion;
-                $documento -> declaracionjurada -> save();
+                $declaracionjurada = DeclaracionJurada::where('documento_id', $id) -> first();
+                $declaracionjurada -> gestion = $request -> gestion;
+                $declaracionjurada -> save();
                 break;
             case 'memorando':
-                $documento -> memorando -> numero_memorando = $request -> numero_memorando;
-                $documento -> memorando -> tipo = $request -> tipo_memo;
-                $documento -> memorando -> save();
+                $memorando = Memorando::where('documento_id', $id) -> first();
+                $memorando -> numero_memorando = $request -> numero_memorando;
+                $memorando -> tipo = $request -> tipo_memo;
+                $memorando -> save();
                 break;
             case 'curriculum':
-                $documento -> curriculum -> especialidad = $request -> especialidad;
-                $documento -> curriculum -> titulo_mayor = $request -> titulo_mayor;
-                $documento -> curriculum -> cantidad_documentos = $request -> cantidad_documentos;
-                $documento -> curriculum -> save();
+                $curriculum = Curriculum::where('documento_id', $id) -> first();
+                $curriculum -> especialidad = $request -> especialidad;
+                $curriculum -> titulo_mayor = $request -> titulo_mayor;
+                $curriculum -> cantidad_documentos = $request -> cantidad_documentos;
+                $curriculum -> save();
                 break;
             case 'servicio':
-                $documento -> servicio -> fecha_emitida = $request -> fecha_emitida;
-                $documento -> servicio -> cantidad_años = $request -> cantidad_años;
-                $documento -> servicio -> save();
+                $servicio = Servicio::where('documento_id', $id) -> first();
+                $servicio -> fecha_emitida = $request -> fecha_emitida;
+                $servicio -> cantidad_años = $request -> cantidad_años;
+                $servicio -> save();
                 break;
             case 'vacacion':
-                $documento -> vacacion -> tipo = $request -> tipo_vacacion;
-                $documento -> vacacion -> cantidad_dias = $request -> cantidad_dias;
-                $documento -> vacacion -> save();
+                $vacacion = Vacacion::where('documento_id', $id) -> first();
+                $vacacion -> tipo = $request -> tipo_vacacion;
+                $vacacion -> cantidad_dias = $request -> cantidad_dias;
+                $vacacion -> save();
                 break;
         }
 

@@ -21,24 +21,33 @@
                         <th>Apellidos</th>
                         <th>Nombres</th>
                         <th>Carnet de Identidad</th>
+                        <th>Activo</th>
                         <th>Operaciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($personales as $personal)
-                        @if ($personal -> activo == "S")
-                            <tr>
-                                <td>{{ ++$i }}</td>
-                                <td>{{ $personal -> apellido_paterno . ' ' . $personal -> apellido_materno }}</td>
-                                <td>{{ $personal -> nombres }}</td>
-                                <td>{{ $personal -> ci }}</td>
-                                <td>
-                                    <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
-                                    <a href="{{ route('personal_edi_personal', ['id' => $personal -> id]) }}">Editar</a> |
-                                    <a href="{{ route('personal_eli_personal', ['id' => $personal -> id]) }}">Eliminar</a>
-                                </td>
-                            </tr>
-                        @endif
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $personal -> apellido_paterno . ' ' . $personal -> apellido_materno }}</td>
+                            <td>{{ $personal -> nombres }}</td>
+                            <td>{{ $personal -> ci }}</td>
+                            <td>
+                                @switch($personal -> activo)
+                                    @case("S")
+                                        Si
+                                        @break
+                                    @case("N")
+                                        No
+                                        @break
+                                @endswitch
+                            </td>
+                            <td>
+                                <a href="{{ route('personal_mos_personal', ['id' => $personal -> id]) }}">Mostrar</a> |
+                                <a href="{{ route('personal_edi_personal', ['id' => $personal -> id]) }}">Editar</a> |
+                                <a href="{{ route('personal_eli_personal', ['id' => $personal -> id]) }}">Eliminar</a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

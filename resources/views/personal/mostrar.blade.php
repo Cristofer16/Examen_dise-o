@@ -57,25 +57,36 @@
                     <tr>
                         <th>N</th>
                         <th>Docuemnto</th>
+                        <th>Tipo de Docuemnto</th>
                         <th>Archivero</th>
+                        <th>Activo</th>
                         <th>Operaciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $documentos = $personal -> documentos ?>
                     @foreach ($documentos as $documento)
-                        @if ($documento -> activo == "S")
-                            <tr>
-                                <td>{{ ++$i }}</td>
-                                <td>{{ $documento -> nombre }}</td>
-                                <td>{{ $documento -> archivero }}</td>
-                                <td>
-                                    <a href="{{ route('documento_mos_documento', ['id' => $documento -> id]) }}">Mostrar</a> |
-                                    <a href="{{ route('documento_edi_documento', ['id' => $documento -> id]) }}">Editar</a> |
-                                    <a href="{{ route('documento_eli_documento', ['id' => $documento -> id]) }}">Eliminar</a>
-                                </td>
-                            </tr>
-                        @endif
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $documento -> nombre }}</td>
+                            <td>{{ $documento -> tipo }}</td>
+                            <td>{{ $documento -> archivero }}</td>
+                            <td>
+                                @switch($documento -> activo)
+                                    @case("S")
+                                        Si
+                                        @break
+                                    @case("N")
+                                        No
+                                        @break
+                                @endswitch
+                            </td>
+                            <td>
+                                <a href="{{ route('documento_mos_documento', ['id' => $documento -> id]) }}">Mostrar</a> |
+                                <a href="{{ route('documento_edi_documento', ['id' => $documento -> id]) }}">Editar</a> |
+                                <a href="{{ route('documento_eli_documento', ['id' => $documento -> id]) }}">Eliminar</a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
