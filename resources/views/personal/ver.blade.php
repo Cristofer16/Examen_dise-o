@@ -6,6 +6,8 @@
 
 @section('estilos')
     <link rel="stylesheet" href="/css/ver.css">
+    <link rel="stylesheet" href="/datatables/datatables.min.css">
+    <link rel="stylesheet" href="/datatables/DataTables-1.13.6/css/dataTables.bootstrap5.min.css">
 @stop
 
 @section('cuerpo')
@@ -14,7 +16,7 @@
         <div class="container">
             <h1>Lista del Personal</h1>
             <?php $i = 0; ?>
-            <table class="table table-dark table-striped table-hover">
+            <table class="table table-dark table-striped table-hover" id="example">
                 <thead>
                     <tr>
                         <th>N</th>
@@ -53,4 +55,7 @@
             </table>
         </div>
     </div>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/datatables/datatables.min.js"></script>
+    <script src="/js/tablas.js"></script>
 @stop
